@@ -36,6 +36,8 @@
     <Compile Include="Product.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Wall_mart.cs" />
+    <Compile Include="Sale.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
