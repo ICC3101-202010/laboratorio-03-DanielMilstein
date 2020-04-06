@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildTheWall_mart", "Laboratorio3\BuildTheWall_mart.csproj", "{396B5424-5C3E-416D-B5D1-AC1392EECFFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{396B5424-5C3E-416D-B5D1-AC1392EECFFA}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{396B5424-5C3E-416D-B5D1-AC1392EECFFA}.Debug|anycpu.Build.0 = Debug|anycpu
+		{396B5424-5C3E-416D-B5D1-AC1392EECFFA}.Release|anycpu.ActiveCfg = Release|anycpu
+		{396B5424-5C3E-416D-B5D1-AC1392EECFFA}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+EndGlobal
