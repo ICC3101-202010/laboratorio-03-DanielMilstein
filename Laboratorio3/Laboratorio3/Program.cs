@@ -240,56 +240,101 @@ namespace BuildTheWall_mart
 
                         else if (input == "3")
                         {
-                            Console.WriteLine("Ingrese el rut del cliente:");
-                            string actrut = Console.ReadLine();
-                            foreach (var item in uandes.GetCustomers())
+
+                            
+                            string actrut = null;
+                            int submenu3 = 1;
+                            Customer actcust = null;
+                            while (actrut == null)
                             {
-                                if (item.GetRut() == actrut)
+                                try
                                 {
-                                    Customer actcust = item;
-                                    Console.WriteLine("3.3.1.- Agregar producto al carro.");
-                                    Console.WriteLine("3.3.2.- Sacar producto del carro.");
-                                    Console.WriteLine("3.3.3.- Finalizar compra.");
-                                    Console.WriteLine(getback);
+                                    Console.WriteLine("Ingrese el rut del cliente:");
+                                    actrut = Console.ReadLine();
+                                    actcust = uandes.GetCustomers().Find(x => x.GetRut() == actrut);
+                                    Console.WriteLine(actcust.GetFullName()) ; //Trigger de la excepcion.
 
-                                    input = Console.ReadLine();
-
-                                    int triplesub = 1;
-
-                                    while (triplesub != 0)
-                                    {
-                                        if (input == "0") { triplesub = 0; }
-                                        else if (input == "1")
-                                        {
-                                            Console.WriteLine("Ingrese SKU del producto");
-                                            string actsku = Console.ReadLine();
-                                            Product wanted = uandes.GetInventory().Find(x => x.GetSKU() == actsku);
-                                            actcust.AddToCart(wanted);
-                                        }
-
-                                        else if (input == "2")
-                                        {
-                                            Console.WriteLine("Ingrese SKU del producto");
-                                            string actsku = Console.ReadLine();
-                                            Product wanted = uandes.GetInventory().Find(x => x.GetSKU() == actsku);
-                                            actcust.RemoveFromCart(wanted);
-                                        }
-
-
-
-
-
-                                    }
-                                    }
-
-
-                                else
-                                {
-                                    Console.WriteLine("Cliente no encontrado.");
                                 }
+
+                                catch (NullReferenceException ex)
+                                {
+                                    Console.WriteLine("Este cliente no existe.");
+                                    Console.WriteLine("Para crear un nuevo cliente regrese al menu cliente ingresando 0.");
+                                    Console.WriteLine("Si desea ingresar otro rut presione 1.");
+                                    string exinp = Console.ReadLine();
+                                    if (exinp == "0") { actrut = "asd"; submenu3 = 2; }
+
+                                    else if (exinp == "1")
+                                    {
+                                        actrut = null;
+                                    }
+                                }
+                            }
+
+                            
+                            while (submenu3 == 1)
+                            {
+
+                                Console.WriteLine("3.3.1.- Agregar producto al carro.");
+                                Console.WriteLine("3.3.2.- Sacar producto del carro.");
+                                Console.WriteLine("3.3.3.- Finalizar compra.");
+                                Console.WriteLine(getback);
+
+                                input = Console.ReadLine();
+
+                                if (input == "0") { submenu3 = 0; }
+                                else if (input == "1")
+                                {
+                                    Console.WriteLine("Ingrese SKU del producto");
+                                    string actsku = Console.ReadLine();
+                                    Product wanted = uandes.GetInventory().Find(x => x.GetSKU() == actsku);
+                                }
+
+                                else if (input == "2")
+                                {
+                                    Console.WriteLine("Ingrese SKU del producto");
+                                    string actsku = Console.ReadLine();
+                                    Product wanted = uandes.GetInventory().Find(x => x.GetSKU() == actsku);
+                                    actcust.RemoveFromCart(wanted);
+                                }
+
+                                else if (input == "3")
+                                {
+                                    Sale compra = new Sale(actcust);
+                                    uandes.Sell(compra);
+                                    compra.PrintReciept();
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+            
+
+        
+                else if (input == "4")
+                {
+
+                    int submenu = 1;
+                    while (submenu == 1)
+                    {
+                        Console.WriteLine("4.1.- Ver ventas");
+                        Console.WriteLine(getback);
+                        input = Console.ReadLine();
+
+                        if (input == "0") { submenu = 0; }
+
+                        else if (input == "1")
+                        {
+                            foreach (Sale item in uandes.GetSales())
+                            {
+                                item.PrintReciept();
+
                             }
                         }
                     }
+
                 }
             }
         }
