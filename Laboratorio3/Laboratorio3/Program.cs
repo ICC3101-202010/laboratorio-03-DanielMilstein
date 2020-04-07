@@ -19,6 +19,7 @@ namespace BuildTheWall_mart
                 Console.WriteLine("2.- Empleados");
                 Console.WriteLine("3.- Clientes");
                 Console.WriteLine("4.- Ventas");
+                Console.WriteLine("5.- Simulacion");
                 Console.WriteLine("0.- Salir");
 
                 Console.WriteLine("Ingrese una opcion:");
@@ -360,6 +361,54 @@ namespace BuildTheWall_mart
                             }
                         }
                     }
+
+                }
+
+                else if (input == "5")
+                {
+                    Customer a = new Customer("Daniel", "Milstein", "Chile", "1", "05/10/1993");
+
+                    Customer b = new Customer("Andres", "Howard", "Chile", "2", "05/10/1993");
+
+                    Customer c = new Customer("Carlos", "Diaz", "Chile", "3", "05/10/1993");
+
+                    Customer d = new Customer("Alvaro", "Cespedes", "Chile", "4", "05/10/1993");
+
+                    Customer e = new Customer("Antonia", "Carrizo", "Chile", "5", "05/10/1993");
+
+                    Customer f = new Customer("Benjamin", "Morgan", "Chile", "6", "05/10/1993");
+
+                    Customer g = new Customer("Camila", "Villalobos", "Chile", "7", "05/10/1993");
+
+                    Customer h = new Customer("Carlo", "Vitali", "Chile", "8", "05/10/1993");
+
+                    Customer i = new Customer("Carlos", "Akel", "Chile", "9", "05/10/1993");
+
+                    Customer j = new Customer("Carmen", "Benavente", "Chile", "10", "05/10/1993");
+
+                    Customer k = new Customer("Cristian", "Vera", "Chile", "11", "05/10/1993");
+
+                    Customer l = new Customer("Cristobal", "Neira", "Chile", "12", "05/10/1993");
+
+                    Customer m = new Customer("Daniel", "Saavedra", "Chile", "13", "05/10/1993");
+
+                    Customer n = new Customer("Diego", "Riedel", "Chile", "14", "05/10/1993");
+
+                    Customer o = new Customer("Diego", "Pinochet", "Chile", "15", "05/10/1993");
+
+                    Customer p = new Customer("Ernesto", "Camus", "Chile", "16", "05/10/1993");
+
+                    Customer q = new Customer("Francisco", "De la maza", "Chile", "17", "05/10/1993");
+
+                    Customer r = new Customer("Felipe", "Cueto", "Chile", "18", "05/10/1993");
+
+                    Customer s = new Customer("Francisco", "Miranda", "Chile", "19", "05/10/1993");
+
+                    Customer t = new Customer("Franco", "Cruzat", "Chile", "20", "05/10/1993");
+
+                    Customer u = new Customer("Ignacio", "Perrotta", "Chile", "21", "05/10/1993");
+
+
 
                 }
             }
