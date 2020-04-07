@@ -1,10 +1,29 @@
 ﻿using System;
-namespace Laboratorio3
+namespace BuildTheWall_mart
 {
-    public class EmptyClass
+    public class Person
     {
-        public EmptyClass()
+        protected string Name;
+        protected string LastName;
+        protected string Nationality;
+        protected string Rut;
+        protected string DateOfBirth;
+
+
+        public Person(string name, string lastName, string nationality, string rut, string dateOfBirth)
         {
+            Name = name;
+            LastName = lastName;
+            Nationality = nationality;
+            Rut = rut;
+            DateOfBirth = dateOfBirth;
+
+        }
+
+        public string GetFullName()
+        {
+            string a = Name + LastName;
+            return a;
         }
     }
 }
