@@ -252,7 +252,7 @@ namespace BuildTheWall_mart
                                     Console.WriteLine("Ingrese el rut del cliente:");
                                     actrut = Console.ReadLine();
                                     actcust = uandes.GetCustomers().Find(x => x.GetRut() == actrut);
-                                    Console.WriteLine(actcust.GetFullName()) ; //Trigger de la excepcion.
+                                    actcust.GetFullName(); //Trigger de la excepcion.
 
                                 }
 
@@ -288,6 +288,7 @@ namespace BuildTheWall_mart
                                     Console.WriteLine("Ingrese SKU del producto");
                                     string actsku = Console.ReadLine();
                                     Product wanted = uandes.GetInventory().Find(x => x.GetSKU() == actsku);
+                                    actcust.AddToCart(wanted);
                                 }
 
                                 else if (input == "2")
@@ -300,9 +301,17 @@ namespace BuildTheWall_mart
 
                                 else if (input == "3")
                                 {
-                                    Sale compra = new Sale(actcust);
-                                    uandes.Sell(compra);
-                                    compra.PrintReciept();
+                                    if (actcust.GetCart().Count() == 0)
+                                    {
+                                        Console.WriteLine("Carro vacio!");
+                                    }
+                                    else
+                                    {
+                                        Sale compra = new Sale(actcust);
+                                        uandes.Sell(compra);
+                                        int r = uandes.GetSales().FindIndex(x => x == compra);
+                                        compra.PrintReciept(r);
+                                    }
                                 }
 
                             }
@@ -329,7 +338,7 @@ namespace BuildTheWall_mart
                         {
                             foreach (Sale item in uandes.GetSales())
                             {
-                                item.PrintReciept();
+                                item.PrintReciepts();
 
                             }
                         }

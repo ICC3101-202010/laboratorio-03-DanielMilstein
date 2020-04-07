@@ -22,7 +22,7 @@ namespace BuildTheWall_mart
 
         public string GetFullName()
         {
-            string a = Name + LastName;
+            string a = Name + " " +LastName;
             return a;
         }
 
