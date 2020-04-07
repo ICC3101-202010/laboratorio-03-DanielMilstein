@@ -22,5 +22,21 @@ namespace BuildTheWall_mart
         public string GetJob() { return Job; }
         public double GetSalary() { return Salary; }
         public string GetWHours() { return WorkingHours; }
+
+        public void ChangeJob(string newjob)
+        {
+            Job = newjob;
+        }
+
+        public void ChangeSalary(string newsal)
+        {
+            double newsal1 = Convert.ToDouble(newsal);
+            Salary = newsal1;
+        }
+
+        public void ChangeWHours(string newwh)
+        {
+            WorkingHours = newwh;
+        }
     }
 }

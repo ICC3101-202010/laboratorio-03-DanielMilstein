@@ -16,8 +16,8 @@ namespace BuildTheWall_mart
             {
                 Console.WriteLine("1.- Productos");
                 Console.WriteLine("2.- Empleados");
-                Console.WriteLine("3.- Ventas");
-                Console.WriteLine("4.- Clientes");
+                Console.WriteLine("3.- Clientes");
+                Console.WriteLine("4.- Ventas");
                 Console.WriteLine("0.- Salir");
 
                 Console.WriteLine("Ingrese una opcion:");
@@ -92,10 +92,8 @@ namespace BuildTheWall_mart
                     while (submenu != 0)
                     {
                         Console.WriteLine("2.1.- Agregar empleado nuevo.");
-                        Console.WriteLine("2.2.- Cambiar sueldo empleado.");
-                        Console.WriteLine("2.3.- Cambiar puesto empleado.");
-                        Console.WriteLine("2.4.- Cambiar horario empleado.");
-                        Console.WriteLine("2.5.- Ver empleados.");
+                        Console.WriteLine("2.2.- Cambiar datos de empleado.");
+                        Console.WriteLine("2.3.- Ver empleados.");
                         Console.WriteLine("0.- Retroceder");
                         Console.WriteLine("Ingrese una opcion:");
                         input = Console.ReadLine();
@@ -126,7 +124,7 @@ namespace BuildTheWall_mart
                             uandes.Hire(empl);
                         }
 
-                        else if (input == "5")
+                        else if (input == "3")
                         {
                             List<Employee> listado = uandes.GetEmployees();
                             string a = "Nombre"; string b = "Apellido"; string c = "Nacionalidad"; string d = "Rut";
@@ -139,6 +137,77 @@ namespace BuildTheWall_mart
                                 item.GetSalary(), item.GetWHours());
 
                             }
+                        }
+
+                        else if (input == "2")
+                        {
+                            Console.WriteLine("Ingrese el rut del empleado.");
+                            string actrut = Console.ReadLine();
+                            foreach (var item in uandes.GetEmployees())
+                            {
+                                if (item.GetRut() == actrut)
+                                {
+                                    int subsubmenu = 1;
+                                    while (subsubmenu != 0)
+                                    {
+                                        Console.WriteLine("2.2.1.- Cambiar cargo");
+                                        Console.WriteLine("2.2.2.- Cambiar sueldo");
+                                        Console.WriteLine("2.2.3.- Cambiar horario.");
+                                        Console.WriteLine("0.- Retroceder");
+                                        Console.WriteLine("Ingrese una opcion:");
+                                        input = Console.ReadLine();
+
+
+                                        if (input == "0") { subsubmenu = 0; }
+
+                                        else if (input == "1")
+                                        {
+                                            Console.WriteLine("Ingrese nuevo cargo.");
+                                            string nwjob = Console.ReadLine();
+                                            item.ChangeJob(nwjob);
+                                        }
+
+                                        else if (input == "2")
+                                        {
+                                            Console.WriteLine("Ingrese nuevo sueldo.");
+                                            string nwsal = Console.ReadLine();
+                                            item.ChangeSalary(nwsal);
+                                        }
+
+                                        else if (input == "3")
+                                        {
+                                            Console.WriteLine("Ingrese nuevo horario.");
+                                            string nwwh = Console.ReadLine();
+                                            item.ChangeWHours(nwwh);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Empleado no encontrado.");
+                                }
+                            }
+                        }
+                    }
+                }
+
+                else if (input == "3")
+                {
+                    int submenu = 1;
+                    while (submenu != 0)
+                    {
+
+                        Console.WriteLine("1.1.- Agregar cliente nuevo.");
+                        Console.WriteLine("1.2.- Agregar stock a producto existente.");
+                        Console.WriteLine("1.3.- Ver lista de productos con stock.");
+                        Console.WriteLine("0.- Retroceder");
+                        Console.WriteLine("Ingrese una opcion:");
+                        input = Console.ReadLine();
+
+                        if (input == "0") { submenu = 0; }
+                        else if (input == "1")
+                        {
+
                         }
                     }
                 }
