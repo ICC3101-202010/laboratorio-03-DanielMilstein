@@ -12,7 +12,24 @@ namespace BuildTheWall_mart
             string job, string salary, string workingHours) : base(name, lastName, nationality, rut, dateOfBirth)
         {
             Job = job;
-            double salary1 = Convert.ToDouble(salary);
+            double salary1 = 0;
+            int a = 1;
+
+            while (a == 1)
+            {
+                try
+                {
+                    Convert.ToDouble(salary);
+                    a = 2;
+                }
+
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Salario debe ser un numero.");
+                    salary = Console.ReadLine();
+                }
+            }
+
             Salary = salary1;
             WorkingHours = workingHours;
 

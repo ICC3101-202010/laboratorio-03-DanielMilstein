@@ -1,7 +1,7 @@
 ﻿using System;
 namespace BuildTheWall_mart
 {
-    public class Person
+    public abstract class Person
     {
         protected string Name;
         protected string LastName;

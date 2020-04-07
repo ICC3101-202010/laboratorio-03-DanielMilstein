@@ -13,9 +13,41 @@ namespace BuildTheWall_mart
         {
             Name = name;
             Brand = brand;
-            double price1 = Convert.ToDouble(price);
+            int a = 1;
+            double price1 = 0;
+            int stock1 = 0;
+            while (a == 1)
+            {
+                try
+                {
+                    price1 = Convert.ToDouble(price);
+                    a = 2;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Precio debe ser un numero.");
+                    price = Console.ReadLine();
+                }
+            }
+
             Price = price1;
-            int stock1 = Convert.ToInt32(stock);
+            while (a == 2)
+            {
+                try
+                {
+                    stock1 = Convert.ToInt32(stock);
+                    a = 3;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Stock debe ser un numero entero.");
+                    stock = Console.ReadLine();
+                }
+
+
+            }
+
+            
             Stock = stock1;
             SKU = sku;
         }
@@ -63,9 +95,21 @@ namespace BuildTheWall_mart
             {
                 Console.WriteLine("Cuantas unidades quieres agregar?");
                 string x = Console.ReadLine();
-                int y = Convert.ToInt32(x);
-                Stock += y;
-                
+                int j = 1;
+                while (j == 1)
+                {
+                    try
+                    {
+                        int y = Convert.ToInt32(x);
+                        Stock += y;
+                        j = 2;
+                    }
+                    catch (FormatException ex)
+                    {
+                        Console.WriteLine("Stock debe ser un entero");
+                        x = Console.ReadLine();
+                    }
+                }
             }
         }
     }
