@@ -311,6 +311,7 @@ namespace BuildTheWall_mart
                                         uandes.Sell(compra);
                                         int r = uandes.GetSales().FindIndex(x => x == compra);
                                         compra.PrintReciept(r);
+                                        submenu3 = 0;
                                     }
                                 }
 
