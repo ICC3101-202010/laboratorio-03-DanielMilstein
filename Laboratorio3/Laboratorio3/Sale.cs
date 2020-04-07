@@ -13,14 +13,9 @@ namespace BuildTheWall_mart
         protected int NdeBoleta;
 
 
-        public Sale(Customer customer)
+        public Sale(Customer customer, Employee cashier)
         {
             Customer = customer;
-
-
-
-
-            Employee cashier = null; //Pendiente
             Cashier = cashier;
             ListOfProducts = Customer.GetCart();
             DateAndTime = DateTime.Now;
@@ -43,8 +38,8 @@ namespace BuildTheWall_mart
             string b = "Precio";
             NdeBoleta = x + 1;
             Console.WriteLine("Boleta N˚ {0}", NdeBoleta);
-            Console.WriteLine("Cliente: {0}", Customer);
-            Console.WriteLine("Cajero: {0}\n", Cashier);
+            Console.WriteLine("Cliente: {0}", Customer.GetFullName());
+            Console.WriteLine("Cajero: {0}\n", Cashier.GetFullName());
             Console.WriteLine("Fecha: {0}\n", DateAndTime);
             Console.WriteLine("{0,-20} {1,10}", a, b);
 
@@ -63,7 +58,7 @@ namespace BuildTheWall_mart
             string b = "Precio";
             Console.WriteLine("Boleta N˚ {0}", NdeBoleta);
             Console.WriteLine("Cliente: {0}", Customer.GetFullName());
-            Console.WriteLine("Cajero: {0}\n", Cashier);
+            Console.WriteLine("Cajero: {0}\n", Cashier.GetFullName());
             Console.WriteLine("Fecha: {0}\n", DateAndTime);
             Console.WriteLine("{0,-20} {1,10}", a, b);
 

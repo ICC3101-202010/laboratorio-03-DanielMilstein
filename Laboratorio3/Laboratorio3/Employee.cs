@@ -23,7 +23,7 @@ namespace BuildTheWall_mart
                     a = 2;
                 }
 
-                catch (FormatException ex)
+                catch (FormatException)
                 {
                     Console.WriteLine("Salario debe ser un numero.");
                     salary = Console.ReadLine();

@@ -256,7 +256,7 @@ namespace BuildTheWall_mart
 
                                 }
 
-                                catch (NullReferenceException ex)
+                                catch (NullReferenceException)
                                 {
                                     Console.WriteLine("Este cliente no existe.");
                                     Console.WriteLine("Para crear un nuevo cliente regrese al menu cliente ingresando 0.");
@@ -307,12 +307,28 @@ namespace BuildTheWall_mart
                                     }
                                     else
                                     {
-                                        Sale compra = new Sale(actcust);
-                                        uandes.Sell(compra);
-                                        int r = uandes.GetSales().FindIndex(x => x == compra);
-                                        compra.PrintReciept(r);
-                                        submenu3 = 0;
+                                        Employee cajero = null;
+                                        List<Employee> cajeros = null;
+                                        
+                                        cajeros= uandes.GetEmployees().FindAll(x => x.GetJob() == "cajero");
+                                        if (cajeros.Count() == 0)
+                                        {
+                                            Console.WriteLine("No hay cajeros disponibles, debe contratar a uno.");
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Random randgen = new Random();
+                                            int rand = randgen.Next(cajeros.Count());
+                                            cajero = cajeros[rand];
+                                            Sale compra = new Sale(actcust, cajero);
+                                            uandes.Sell(compra);
+                                            int r = uandes.GetSales().FindIndex(x => x == compra);
+                                            compra.PrintReciept(r);
+                                            submenu3 = 0;
+                                        }
                                     }
+
                                 }
 
                             }

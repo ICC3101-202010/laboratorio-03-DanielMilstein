@@ -23,7 +23,7 @@ namespace BuildTheWall_mart
                     price1 = Convert.ToDouble(price);
                     a = 2;
                 }
-                catch (FormatException ex)
+                catch (FormatException)
                 {
                     Console.WriteLine("Precio debe ser un numero.");
                     price = Console.ReadLine();
@@ -38,7 +38,7 @@ namespace BuildTheWall_mart
                     stock1 = Convert.ToInt32(stock);
                     a = 3;
                 }
-                catch (FormatException ex)
+                catch (FormatException)
                 {
                     Console.WriteLine("Stock debe ser un numero entero.");
                     stock = Console.ReadLine();
@@ -104,7 +104,7 @@ namespace BuildTheWall_mart
                         Stock += y;
                         j = 2;
                     }
-                    catch (FormatException ex)
+                    catch (FormatException)
                     {
                         Console.WriteLine("Stock debe ser un entero");
                         x = Console.ReadLine();
