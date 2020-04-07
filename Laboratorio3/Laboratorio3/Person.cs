@@ -25,5 +25,11 @@ namespace BuildTheWall_mart
             string a = Name + LastName;
             return a;
         }
+
+        public string GetName() { return Name; }
+        public string GetLast() { return LastName; }
+        public string GetNationality() { return Nationality; }
+        public string GetRut() { return Rut; }
+        public string GetDoB() { return DateOfBirth; }
     }
 }

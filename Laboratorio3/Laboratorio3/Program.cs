@@ -68,13 +68,13 @@ namespace BuildTheWall_mart
 
                             }
 
-                            
+
                         }
                         else if (input == "3")
                         {
                             List<Product> listado = uandes.GetInventory();
                             string a = "SKU"; string b = "Nombre"; string c = "Marca"; string d = "Precio"; string e = "Stock";
-                            Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,0} {4,10}",  a, b, c, d, e);
+                            Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,0} {4,10}", a, b, c, d, e);
                             foreach (var item in listado)
                             {
                                 Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,0} {4,10}",
@@ -83,7 +83,64 @@ namespace BuildTheWall_mart
                             }
 
                         }
-                     }
+                    }
+                }
+
+                else if (input == "2")
+                {
+                    int submenu = 1;
+                    while (submenu != 0)
+                    {
+                        Console.WriteLine("2.1.- Agregar empleado nuevo.");
+                        Console.WriteLine("2.2.- Cambiar sueldo empleado.");
+                        Console.WriteLine("2.3.- Cambiar puesto empleado.");
+                        Console.WriteLine("2.4.- Cambiar horario empleado.");
+                        Console.WriteLine("2.5.- Ver empleados.");
+                        Console.WriteLine("0.- Retroceder");
+                        Console.WriteLine("Ingrese una opcion:");
+                        input = Console.ReadLine();
+
+
+                        if (input == "0") { submenu = 0; }
+
+                        else if (input == "1")
+                        {
+                            Console.WriteLine("Nombre del empleado:");
+                            string empname = Console.ReadLine();
+                            Console.WriteLine("Apellido:");
+                            string emplast = Console.ReadLine();
+                            Console.WriteLine("Nacionalidad:");
+                            string empnat = Console.ReadLine();
+                            Console.WriteLine("Rut:");
+                            string emprut = Console.ReadLine();
+                            Console.WriteLine("Fecha de nacimiento:");
+                            string empdob = Console.ReadLine();
+                            Console.WriteLine("Cargo:");
+                            string empjob = Console.ReadLine();
+                            Console.WriteLine("Sueldo:");
+                            string empsalary = Console.ReadLine();
+                            Console.WriteLine("Horario:");
+                            string empworkh = Console.ReadLine();
+
+                            Employee empl = new Employee(empname, emplast, empnat, emprut, empdob, empjob, empsalary, empworkh);
+                            uandes.Hire(empl);
+                        }
+
+                        else if (input == "5")
+                        {
+                            List<Employee> listado = uandes.GetEmployees();
+                            string a = "Nombre"; string b = "Apellido"; string c = "Nacionalidad"; string d = "Rut";
+                            string e = "Fecha de nacimiento"; string f = "Cargo"; string g = "Sueldo"; string h = "Horario";
+                            Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,0} {4,10} {5,15} {6,20} {7,25}", a, b, c, d, e, f, g, h);
+                            foreach (var item in listado)
+                            {
+                                Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,0} {4,10} {5,15} {6,20} {7,25}",
+                                item.GetName(), item.GetLast(), item.GetNationality(), item.GetRut(), item.GetDoB(), item.GetJob(),
+                                item.GetSalary(), item.GetWHours());
+
+                            }
+                        }
+                    }
                 }
             }
         }

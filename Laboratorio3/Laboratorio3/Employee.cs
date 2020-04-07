@@ -4,18 +4,23 @@ namespace BuildTheWall_mart
     public class Employee : Person
     {
         protected string Job;
-        protected float Salary;
+        protected double Salary;
         protected string WorkingHours; 
 
 
         public Employee(string name, string lastName, string nationality, string rut, string dateOfBirth,
-            string job, float salary, string workingHours) : base(name, lastName, nationality, rut, dateOfBirth)
+            string job, string salary, string workingHours) : base(name, lastName, nationality, rut, dateOfBirth)
         {
             Job = job;
-            Salary = salary;
+            double salary1 = Convert.ToDouble(salary);
+            Salary = salary1;
             WorkingHours = workingHours;
 
         }
 
+
+        public string GetJob() { return Job; }
+        public double GetSalary() { return Salary; }
+        public string GetWHours() { return WorkingHours; }
     }
 }

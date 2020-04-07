@@ -52,5 +52,15 @@ namespace BuildTheWall_mart
         {
             return Inventory;
         }
+
+        public List<Employee> GetEmployees()
+        {
+            return Employees;
+        }
+
+        public List<Sale> GetSales()
+        {
+            return Sales;
+        }
     }
 }
