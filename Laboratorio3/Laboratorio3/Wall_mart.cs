@@ -7,6 +7,7 @@ namespace BuildTheWall_mart
         protected List<Employee> Employees;
         protected List<Product> Inventory;
         protected List<Sale> Sales;
+        protected List<Customer> Customers;
 
 
 
@@ -20,12 +21,23 @@ namespace BuildTheWall_mart
             Inventory = inventory;
             List<Sale> sales = new List<Sale>();
             Sales = sales;
+            List<Customer> customers = new List<Customer>();
+            Customers = customers;
         }
 
         public void AddProduct(Product x)
         {
             Inventory.Add(x);
 
+        }
+        public List<Customer> GetCustomers()
+        {
+            return Customers;
+        }
+
+        public void AddCustomer(Customer x)
+        {
+            Customers.Add(x);
         }
 
         public void Hire(Employee y)

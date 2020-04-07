@@ -26,6 +26,7 @@ namespace BuildTheWall_mart
             }
 
             Total = total;
+            Customer.EmptyCart();
         }
     }
 }

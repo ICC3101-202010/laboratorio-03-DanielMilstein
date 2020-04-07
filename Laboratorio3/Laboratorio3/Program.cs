@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BuildTheWall_mart
 {
@@ -9,7 +10,7 @@ namespace BuildTheWall_mart
         {
             Console.WriteLine("Bienvenido a Build the Wall_mart!");
             Wall_mart uandes = new Wall_mart();
-
+            string getback = "0.- Retroceder";
             int menu = 1;
 
             while (menu != 0)
@@ -33,7 +34,7 @@ namespace BuildTheWall_mart
                         Console.WriteLine("1.1.- Agregar producto nuevo.");
                         Console.WriteLine("1.2.- Agregar stock a producto existente.");
                         Console.WriteLine("1.3.- Ver lista de productos con stock.");
-                        Console.WriteLine("0.- Retroceder");
+                        Console.WriteLine(getback);
                         Console.WriteLine("Ingrese una opcion:");
                         input = Console.ReadLine();
 
@@ -94,7 +95,7 @@ namespace BuildTheWall_mart
                         Console.WriteLine("2.1.- Agregar empleado nuevo.");
                         Console.WriteLine("2.2.- Cambiar datos de empleado.");
                         Console.WriteLine("2.3.- Ver empleados.");
-                        Console.WriteLine("0.- Retroceder");
+                        Console.WriteLine(getback);
                         Console.WriteLine("Ingrese una opcion:");
                         input = Console.ReadLine();
 
@@ -153,7 +154,7 @@ namespace BuildTheWall_mart
                                         Console.WriteLine("2.2.1.- Cambiar cargo");
                                         Console.WriteLine("2.2.2.- Cambiar sueldo");
                                         Console.WriteLine("2.2.3.- Cambiar horario.");
-                                        Console.WriteLine("0.- Retroceder");
+                                        Console.WriteLine(getback);
                                         Console.WriteLine("Ingrese una opcion:");
                                         input = Console.ReadLine();
 
@@ -197,17 +198,96 @@ namespace BuildTheWall_mart
                     while (submenu != 0)
                     {
 
-                        Console.WriteLine("1.1.- Agregar cliente nuevo.");
-                        Console.WriteLine("1.2.- Agregar stock a producto existente.");
-                        Console.WriteLine("1.3.- Ver lista de productos con stock.");
-                        Console.WriteLine("0.- Retroceder");
+                        Console.WriteLine("3.1.- Agregar cliente nuevo.");
+                        Console.WriteLine("3.2.- Ver lista de clientes.");
+                        Console.WriteLine("3.3.- Usar cliente.");
+                        Console.WriteLine(getback);
                         Console.WriteLine("Ingrese una opcion:");
                         input = Console.ReadLine();
 
                         if (input == "0") { submenu = 0; }
                         else if (input == "1")
                         {
+                            Console.WriteLine("Nombre del cliente:");
+                            string cusname = Console.ReadLine();
+                            Console.WriteLine("Apellido:");
+                            string cuslast = Console.ReadLine();
+                            Console.WriteLine("Nacionalidad:");
+                            string cusnat = Console.ReadLine();
+                            Console.WriteLine("Rut:");
+                            string cusrut = Console.ReadLine();
+                            Console.WriteLine("Fecha de nacimiento:");
+                            string cusdob = Console.ReadLine();
 
+                            Customer cust = new Customer(cusname, cuslast, cusnat, cusrut, cusdob);
+                            uandes.AddCustomer(cust);
+                        }
+
+                        else if (input == "2")
+                        {
+                            List<Customer> listado = uandes.GetCustomers();
+                            string a = "Nombre"; string b = "Apellido"; string c = "Nacionalidad"; string d = "Rut";
+                            string e = "Fecha de nacimiento"; string f = "Cantidad de productos en el carro";
+                            Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,0} {4,10} {5,15}", a, b, c, d, e, f);
+                            foreach (var item in listado)
+                            {
+                                Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,0} {4,10} {5,15}",
+                                item.GetName(), item.GetLast(), item.GetNationality(), item.GetRut(), item.GetDoB(), item.GetCart().Count());
+
+                            }
+
+                        }
+
+                        else if (input == "3")
+                        {
+                            Console.WriteLine("Ingrese el rut del cliente:");
+                            string actrut = Console.ReadLine();
+                            foreach (var item in uandes.GetCustomers())
+                            {
+                                if (item.GetRut() == actrut)
+                                {
+                                    Customer actcust = item;
+                                    Console.WriteLine("3.3.1.- Agregar producto al carro.");
+                                    Console.WriteLine("3.3.2.- Sacar producto del carro.");
+                                    Console.WriteLine("3.3.3.- Finalizar compra.");
+                                    Console.WriteLine(getback);
+
+                                    input = Console.ReadLine();
+
+                                    int triplesub = 1;
+
+                                    while (triplesub != 0)
+                                    {
+                                        if (input == "0") { triplesub = 0; }
+                                        else if (input == "1")
+                                        {
+                                            Console.WriteLine("Ingrese SKU del producto");
+                                            string actsku = Console.ReadLine();
+                                            Product wanted = uandes.GetInventory().Find(x => x.GetSKU() == actsku);
+                                            actcust.AddToCart(wanted);
+                                        }
+
+                                        else if (input == "2")
+                                        {
+                                            Console.WriteLine("Ingrese SKU del producto");
+                                            string actsku = Console.ReadLine();
+                                            Product wanted = uandes.GetInventory().Find(x => x.GetSKU() == actsku);
+                                            actcust.RemoveFromCart(wanted);
+                                        }
+
+
+
+
+
+                                    }
+                                    }
+
+
+                                else
+                                {
+                                    Console.WriteLine("Cliente no encontrado.");
+                                }
+                            }
                         }
                     }
                 }

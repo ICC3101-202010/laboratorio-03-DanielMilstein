@@ -12,7 +12,9 @@ namespace BuildTheWall_mart
 
         public Customer(string name, string lastName, string nationality, string rut, string dateOfBirth) : base(name, lastName, nationality, rut, dateOfBirth)
         {
-            Cart = new List<Product>();
+           List<Product> cart = new List<Product>();
+
+            Cart = cart;
         }
 
         public void AddToCart(Product x)
@@ -50,7 +52,12 @@ namespace BuildTheWall_mart
             return Cart;
         }
 
-
+        public void EmptyCart()
+        {
+            //Se usa cuando el cliente termina de comprar.
+            List<Product> cart = new List<Product>();
+            Cart = cart;
+        }
 
 
 
