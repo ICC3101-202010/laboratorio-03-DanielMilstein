@@ -57,14 +57,27 @@ namespace BuildTheWall_mart
                         else if (input == "2")
                         {
                             Console.WriteLine("A que producto quieres agregar stock?\nIngrese SKU:");
+                            string actsku = Console.ReadLine();
+                            foreach (var item in uandes.GetInventory())
+                            {
+                                if (item.GetSKU() == actsku)
+                                {
+                                    Product newstock = item;
+                                    uandes.ShipmentArrived(newstock);
+                                }
+
+                            }
+
+                            
                         }
                         else if (input == "3")
                         {
                             List<Product> listado = uandes.GetInventory();
-                            Console.WriteLine("SKU\t Nombre\t Marca\t Precio\t Stock\n");
+                            string a = "SKU"; string b = "Nombre"; string c = "Marca"; string d = "Precio"; string e = "Stock";
+                            Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,0} {4,10}",  a, b, c, d, e);
                             foreach (var item in listado)
                             {
-                                Console.WriteLine("{0}\t {1}\t {2}\t {3}\t {4}\t",
+                                Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,0} {4,10}",
                                 item.GetSKU(), item.GetName(), item.GetBrand(), item.GetPrice(), item.GetStock());
 
                             }
